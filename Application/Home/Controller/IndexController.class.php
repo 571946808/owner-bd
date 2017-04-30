@@ -37,6 +37,26 @@ class IndexController extends Controller{
         }
     }
 
+    public function getInfo(){
+        $userid = $_SESSION['user_id'];
+        $message = M('message');        
+        $service = $message->where("user_id='$userid'")->getField('ownername,residence_name,unit');
+
+        if($service){
+            $result = array(
+                'code'=> '0',
+                'obj' => $service
+            );
+            echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        }else{
+              $result = array(
+                  'code'=> '1',
+                  'errMsg'=> '查询失败'
+              );
+              echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     //首页
     public function  mange(){
         echo '这里是业主端首页';
