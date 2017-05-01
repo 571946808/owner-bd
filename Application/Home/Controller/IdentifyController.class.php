@@ -39,8 +39,8 @@ class  IdentifyController extends Controller{
         $data['house_num']=$house_num;
         $data['id_num']=$id_num;
         $data['date']=date('Y-m-d H:i:s');
-        $user_id = $_SESSION['user_id'];
-        $data['user_id'] =  $user_id;
+        $user_id=$_SESSION['user_id'];
+        $data['user_id']=$user_id;
 
         if($message->create($data)){
             $res = $message->add();

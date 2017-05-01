@@ -45,6 +45,7 @@ class RegisterController extends Controller{
         if($login->create($data)){
             $id = $login->add();
             if($id){
+                $_SESSION['user_id']=$id;
                 $result = array(
                     'code'=> '0',
                     'ext'=> '新用户注册成功'
